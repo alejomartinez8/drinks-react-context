@@ -15,7 +15,8 @@ $ npm build // build application
 
 ## Features
 
-* Context Hook
+* React
+  * Context Hook
 * Axios
 * Bootstrap
 * Material-UI (Modal)
