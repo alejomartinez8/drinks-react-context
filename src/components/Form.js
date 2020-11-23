@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CategoryContext } from '../context/CategoryContext';
 import { RecipesContext } from '../context/RecipesContext';
 
@@ -8,8 +8,17 @@ const Form = () => {
     category: ''
   });
 
+  const { ingredient, category } = search;
+
   const { categories } = useContext(CategoryContext);
   const { searchRecipe, setFetchFlag } = useContext(RecipesContext);
+
+  useEffect(() => {
+    console.log(categories.length);
+    if (categories.length > 0) {
+      setSearch({ ...search, category: categories[0].strCategory });
+    }
+  }, [categories]);
 
   const getDataRecipe = (e) => {
     setSearch({
@@ -32,11 +41,18 @@ const Form = () => {
 
       <div className='row mt-4'>
         <div className='col-md-4'>
-          <input type='text' name='ingredient' className='form-control' placeholder='Search by ingredient' onChange={getDataRecipe} />
+          <input
+            type='text'
+            name='ingredient'
+            value={ingredient}
+            className='form-control'
+            placeholder='Search by ingredient'
+            onChange={getDataRecipe}
+          />
         </div>
 
         <div className='col-md-4'>
-          <select name='category' className='form-control' onChange={getDataRecipe}>
+          <select name='category' value={category} className='form-control' onChange={getDataRecipe}>
             <option value=''>--- Choose Category ---</option>
             {categories.map((category) => (
               <option key={category.strCategory}>{category.strCategory}</option>
