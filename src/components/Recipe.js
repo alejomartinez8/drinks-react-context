@@ -13,7 +13,7 @@ function getModalStyle() {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
     overflow: 'scroll',
-    height: '100%',
+    height: '80%',
     display: 'block'
   };
 }
@@ -21,7 +21,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 600,
+    width: '80%',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
@@ -72,7 +72,7 @@ const Recipe = ({ recipe }) => {
               handleOpen();
             }}
           >
-            Ver receta
+            Show
           </button>
           <Modal
             open={open}
@@ -89,6 +89,16 @@ const Recipe = ({ recipe }) => {
               <img className='img-fluid my-4' src={infoRecipe.strDrinkThumb} alt='' />
               <h3>Ingredients</h3>
               <ul>{showIngredients(infoRecipe)}</ul>
+              <button
+                className='btn btn-primary'
+                onClick={() => {
+                  setRecipeId(null);
+                  setInfoRecipe({});
+                  handleClose();
+                }}
+              >
+                Close
+              </button>
             </div>
           </Modal>
         </div>

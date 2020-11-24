@@ -40,7 +40,7 @@ const Form = () => {
       </fieldset>
 
       <div className='row mt-4'>
-        <div className='col-md-4'>
+        <div className='col-md-4 mb-4'>
           <input
             type='text'
             name='ingredient'
@@ -51,7 +51,7 @@ const Form = () => {
           />
         </div>
 
-        <div className='col-md-4'>
+        <div className='col-md-4 mb-4'>
           <select name='category' value={category} className='form-control' onChange={getDataRecipe}>
             <option value=''>--- Choose Category ---</option>
             {categories.map((category) => (
